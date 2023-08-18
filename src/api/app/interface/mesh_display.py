@@ -1,5 +1,5 @@
 import torch
-from ...shap_e.util.notebooks import create_pan_cameras, decode_latent_images, gif_widget
+from jarvis.util.notebooks import create_pan_cameras, decode_latent_images, gif_widget
 
 class Display:
     """
@@ -24,5 +24,5 @@ class Display:
                 latent, 
                 cameras, 
                 render_mode=self.render_mode
-            )
-            display(gif_widget(images)) #BUG: display is not defined
+          )
+          display(gif_widget(images)) #BUG: display is not defined  # noqa: F821

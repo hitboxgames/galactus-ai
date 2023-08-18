@@ -1,0 +1,12 @@
+version: "3"
+
+# define services
+services:
+  api:
+  # define container name
+    container_name: galactus
+    # point to dockerfile for api build
+    build: .
+    # define ports to expose
+    ports:
+      - 5000:5000

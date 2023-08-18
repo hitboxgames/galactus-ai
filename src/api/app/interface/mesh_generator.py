@@ -1,13 +1,15 @@
 import torch
-from ...shap_e.diffusion.sample import sample_latents
-from ...shap_e.util.notebooks import decode_latent_images
+from app.jarvis.diffusion.sample import sample_latents
+from app.jarvis.util.notebooks import decode_latent_images
 
 class MeshGenerator:
     """
     Class that generates meshes from a prompt.
 
     Attributes:
-        model_loader: 
+        model_loader: A ModelLoader object.
+        batch_size: The batch size to use when generating a latent vector.
+        guidance_scale: The guidance scale to use when generating a latent vector.
     """
     def __init__(self, model_loader):
         self.model_loader = model_loader
