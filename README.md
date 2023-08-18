@@ -1,4 +1,4 @@
-# Galactus Mirco Service
+# Galactus Micro Service
 
 Galactus is a micro service which exposes the Jarvis 3D mesh generator model using Flask.  
 
