@@ -4,7 +4,7 @@ from typing import Iterable, Optional
 import numpy as np
 import torch
 
-import shap_e.rendering.mesh
+import app.jarvis.rendering.mesh
 
 from ._utils import cross_product, normalize
 

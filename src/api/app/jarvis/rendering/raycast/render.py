@@ -2,12 +2,12 @@ from typing import Optional, Sequence
 
 import torch
 
-from shap_e.rendering.blender.constants import (
+from app.jarvis.rendering.blender.constants import (
     BASIC_AMBIENT_COLOR,
     BASIC_DIFFUSE_COLOR,
     UNIFORM_LIGHT_DIRECTION,
 )
-from shap_e.rendering.view_data import ProjectiveCamera
+from app.jarvis.rendering.view_data import ProjectiveCamera
 
 from .cast import cast_camera
 from .types import RayCollisions, TriMesh

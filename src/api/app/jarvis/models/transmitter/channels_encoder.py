@@ -10,18 +10,18 @@ import torch.nn.functional as F
 from PIL import Image
 from torch import torch
 
-from shap_e.models.generation.perceiver import SimplePerceiver
-from shap_e.models.generation.transformer import Transformer
-from shap_e.models.nn.camera import DifferentiableProjectiveCamera
-from shap_e.models.nn.encoding import (
+from app.jarvis.models.generation.perceiver import SimplePerceiver
+from app.jarvis.models.generation.transformer import Transformer
+from app.jarvis.models.nn.camera import DifferentiableProjectiveCamera
+from app.jarvis.models.nn.encoding import (
     MultiviewPointCloudEmbedding,
     MultiviewPoseEmbedding,
     PosEmbLinear,
 )
-from shap_e.models.nn.ops import PointSetEmbedding
-from shap_e.rendering.point_cloud import PointCloud
-from shap_e.rendering.view_data import ProjectiveCamera
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.nn.ops import PointSetEmbedding
+from app.jarvis.rendering.point_cloud import PointCloud
+from app.jarvis.rendering.view_data import ProjectiveCamera
+from app.jarvis.util.collections import AttrDict
 
 from .base import ChannelsEncoder
 

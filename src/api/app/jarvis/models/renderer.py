@@ -4,14 +4,14 @@ from typing import Callable, Dict, List, Optional, Tuple
 import numpy as np
 import torch
 
-from shap_e.models.nn.camera import (
+from app.jarvis.models.nn.camera import (
     DifferentiableCamera,
     DifferentiableProjectiveCamera,
     get_image_coords,
     projective_camera_frame,
 )
-from shap_e.models.nn.meta import MetaModule
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.nn.meta import MetaModule
+from app.jarvis.util.collections import AttrDict
 
 
 class Renderer(MetaModule):

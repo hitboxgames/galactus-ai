@@ -1,5 +1,5 @@
 import torch
-from jarvis.util.notebooks import create_pan_cameras, decode_latent_images, gif_widget
+from app.jarvis.util.notebooks import create_pan_cameras, decode_latent_images, gif_widget
 
 class Display:
     """

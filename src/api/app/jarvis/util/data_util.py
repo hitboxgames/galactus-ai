@@ -7,13 +7,13 @@ import numpy as np
 import torch
 from PIL import Image
 
-from shap_e.rendering.blender.render import render_mesh, render_model
-from shap_e.rendering.blender.view_data import BlenderViewData
-from shap_e.rendering.mesh import TriMesh
-from shap_e.rendering.point_cloud import PointCloud
-from shap_e.rendering.view_data import ViewData
-from shap_e.util.collections import AttrDict
-from shap_e.util.image_util import center_crop, get_alpha, remove_alpha, resize
+from app.jarvis.rendering.blender.render import render_mesh, render_model
+from app.jarvis.rendering.blender.view_data import BlenderViewData
+from app.jarvis.rendering.mesh import TriMesh
+from app.jarvis.rendering.point_cloud import PointCloud
+from app.jarvis.rendering.view_data import ViewData
+from app.jarvis.util.collections import AttrDict
+from app.jarvis.util.image_util import center_crop, get_alpha, remove_alpha, resize
 
 
 def load_or_create_multimodal_batch(

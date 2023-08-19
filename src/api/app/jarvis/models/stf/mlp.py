@@ -4,12 +4,12 @@ from typing import Any, Dict, Optional, Tuple
 import torch
 import torch.nn as nn
 
-from shap_e.models.nn.checkpoint import checkpoint
-from shap_e.models.nn.encoding import encode_position, maybe_encode_direction
-from shap_e.models.nn.meta import MetaModule, subdict
-from shap_e.models.nn.ops import MetaLinear, get_act, mlp_init
-from shap_e.models.query import Query
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.nn.checkpoint import checkpoint
+from app.jarvis.models.nn.encoding import encode_position, maybe_encode_direction
+from app.jarvis.models.nn.meta import MetaModule, subdict
+from app.jarvis.models.nn.ops import MetaLinear, get_act, mlp_init
+from app.jarvis.models.query import Query
+from app.jarvis.util.collections import AttrDict
 
 from .base import Model
 

@@ -6,7 +6,7 @@ from typing import BinaryIO, Dict, List, Optional, Union
 import blobfile as bf
 import numpy as np
 
-from shap_e.rendering.view_data import ViewData
+from app.jarvis.rendering.view_data import ViewData
 
 from .ply_util import write_ply
 

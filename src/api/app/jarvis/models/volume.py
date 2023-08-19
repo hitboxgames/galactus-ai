@@ -4,8 +4,8 @@ from typing import Dict, Optional, Tuple
 
 import torch
 
-from shap_e.models.nn.meta import MetaModule
-from shap_e.models.nn.utils import ArrayType, safe_divide, to_torch
+from app.jarvis.models.nn.meta import MetaModule
+from app.jarvis.models.nn.utils import ArrayType, safe_divide, to_torch
 
 
 @dataclass

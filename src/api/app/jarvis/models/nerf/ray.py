@@ -5,9 +5,9 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import torch
 
-from shap_e.models.nn.utils import sample_pmf
-from shap_e.models.volume import Volume, VolumeRange
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.nn.utils import sample_pmf
+from app.jarvis.models.volume import Volume, VolumeRange
+from app.jarvis.util.collections import AttrDict
 
 from .model import NeRFModel, Query
 

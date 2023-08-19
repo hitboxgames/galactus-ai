@@ -3,7 +3,7 @@ from typing import BinaryIO, Optional
 
 import numpy as np
 
-from shap_e.util.io import buffered_writer
+from app.jarvis.util.io import buffered_writer
 
 
 def write_ply(

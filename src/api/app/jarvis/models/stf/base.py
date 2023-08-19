@@ -3,9 +3,9 @@ from typing import Any, Dict, Optional
 
 import torch
 
-from shap_e.models.query import Query
-from shap_e.models.renderer import append_tensor
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.query import Query
+from app.jarvis.models.renderer import append_tensor
+from app.jarvis.util.collections import AttrDict
 
 
 class Model(ABC):

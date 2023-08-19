@@ -104,4 +104,22 @@ class TriMesh:
 
         combined_data = ["v " + vertex for vertex in vertices] + faces
 
-        raw_f.writelines("\n".join(combined_data))
+        return raw_f.writelines("\n".join(combined_data))
+    
+    def get_vertices(self, raw_f: BinaryIO):
+        if self.has_vertex_colors():
+            vertex_colors = np.stack([self.vertex_channels[x] for x in "RGB"], axis=1)
+            vertices = [
+                "{} {} {} {} {} {}".format(*coord, *color)
+                for coord, color in zip(self.verts.tolist(), vertex_colors.tolist())
+            ]
+        else:
+            vertices = ["{} {} {}".format(*coord) for coord in self.verts.tolist()]
+        return vertices
+    
+    def get_faces(self, raw_f: BinaryIO):
+        faces = [
+            "f {} {} {}".format(str(tri[0] + 1), str(tri[1] + 1), str(tri[2] + 1))
+            for tri in self.faces.tolist()
+        ]
+        return faces

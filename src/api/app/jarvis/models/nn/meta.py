@@ -30,7 +30,7 @@ from collections import OrderedDict
 
 import torch.nn as nn
 
-from shap_e.util.collections import AttrDict
+from app.jarvis.util.collections import AttrDict
 
 __all__ = [
     "MetaModule",

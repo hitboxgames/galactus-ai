@@ -3,7 +3,7 @@ from typing import Iterator, Optional, Tuple
 import numpy as np
 import torch
 
-from shap_e.rendering.view_data import ProjectiveCamera
+from app.jarvis.rendering.view_data import ProjectiveCamera
 
 from ._utils import cross_product
 from .types import RayCollisions, Rays, TriMesh

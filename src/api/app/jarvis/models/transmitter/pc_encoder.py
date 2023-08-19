@@ -8,11 +8,11 @@ import torch.nn.functional as F
 from PIL import Image
 from torch import torch
 
-from shap_e.models.generation.perceiver import SimplePerceiver
-from shap_e.models.generation.transformer import Transformer
-from shap_e.models.nn.encoding import PosEmbLinear
-from shap_e.rendering.view_data import ProjectiveCamera
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.generation.perceiver import SimplePerceiver
+from app.jarvis.models.generation.transformer import Transformer
+from app.jarvis.models.nn.encoding import PosEmbLinear
+from app.jarvis.rendering.view_data import ProjectiveCamera
+from app.jarvis.util.collections import AttrDict
 
 from .base import VectorEncoder
 from .channels_encoder import DatasetIterator, sample_pcl_fps

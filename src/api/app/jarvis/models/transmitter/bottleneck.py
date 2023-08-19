@@ -5,8 +5,8 @@ import numpy as np
 import torch.nn as nn
 from torch import torch
 
-from shap_e.diffusion.gaussian_diffusion import diffusion_from_config
-from shap_e.util.collections import AttrDict
+from app.jarvis.diffusion.gaussian_diffusion import diffusion_from_config
+from app.jarvis.util.collections import AttrDict
 
 
 class LatentBottleneck(nn.Module, ABC):

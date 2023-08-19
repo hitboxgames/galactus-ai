@@ -47,6 +47,7 @@ def sample_latents(
 ) -> torch.Tensor:
     sample_shape = (batch_size, model.d_latent)
 
+    print("Sampling latents")
     if device is None:
         device = next(model.parameters()).device
 
@@ -55,7 +56,7 @@ def sample_latents(
     if guidance_scale != 1.0 and guidance_scale != 0.0:
         for k, v in model_kwargs.copy().items():
             model_kwargs[k] = torch.cat([v, torch.zeros_like(v)], dim=0)
-
+    print("Sampling latents")
     sample_shape = (batch_size, model.d_latent)
     with torch.autocast(device_type=device.type, enabled=use_fp16):
         if use_karras:

@@ -5,34 +5,34 @@ import torch
 import torch.nn as nn
 import yaml
 
-from shap_e.models.generation.latent_diffusion import SplitVectorDiffusion
-from shap_e.models.generation.perceiver import PointDiffusionPerceiver
-from shap_e.models.generation.pooled_mlp import PooledMLP
-from shap_e.models.generation.transformer import (
+from app.jarvis.models.generation.latent_diffusion import SplitVectorDiffusion
+from app.jarvis.models.generation.perceiver import PointDiffusionPerceiver
+from app.jarvis.models.generation.pooled_mlp import PooledMLP
+from app.jarvis.models.generation.transformer import (
     CLIPImageGridPointDiffusionTransformer,
     CLIPImageGridUpsamplePointDiffusionTransformer,
     CLIPImagePointDiffusionTransformer,
     PointDiffusionTransformer,
     UpsamplePointDiffusionTransformer,
 )
-from shap_e.models.nerf.model import MLPNeRFModel, VoidNeRFModel
-from shap_e.models.nerf.renderer import OneStepNeRFRenderer, TwoStepNeRFRenderer
-from shap_e.models.nerstf.mlp import MLPDensitySDFModel, MLPNeRSTFModel
-from shap_e.models.nerstf.renderer import NeRSTFRenderer
-from shap_e.models.nn.meta import batch_meta_state_dict
-from shap_e.models.stf.mlp import MLPSDFModel, MLPTextureFieldModel
-from shap_e.models.stf.renderer import STFRenderer
-from shap_e.models.transmitter.base import ChannelsDecoder, Transmitter, VectorDecoder
-from shap_e.models.transmitter.channels_encoder import (
+from app.jarvis.models.nerf.model import MLPNeRFModel, VoidNeRFModel
+from app.jarvis.models.nerf.renderer import OneStepNeRFRenderer, TwoStepNeRFRenderer
+from app.jarvis.models.nerstf.mlp import MLPDensitySDFModel, MLPNeRSTFModel
+from app.jarvis.models.nerstf.renderer import NeRSTFRenderer
+from app.jarvis.models.nn.meta import batch_meta_state_dict
+from app.jarvis.models.stf.mlp import MLPSDFModel, MLPTextureFieldModel
+from app.jarvis.models.stf.renderer import STFRenderer
+from app.jarvis.models.transmitter.base import ChannelsDecoder, Transmitter, VectorDecoder
+from app.jarvis.models.transmitter.channels_encoder import (
     PointCloudPerceiverChannelsEncoder,
     PointCloudTransformerChannelsEncoder,
 )
-from shap_e.models.transmitter.multiview_encoder import MultiviewTransformerEncoder
-from shap_e.models.transmitter.pc_encoder import (
+from app.jarvis.models.transmitter.multiview_encoder import MultiviewTransformerEncoder
+from app.jarvis.models.transmitter.pc_encoder import (
     PointCloudPerceiverEncoder,
     PointCloudTransformerEncoder,
 )
-from shap_e.models.volume import BoundingBoxVolume, SphericalVolume, UnboundedVolume
+from app.jarvis.models.volume import BoundingBoxVolume, SphericalVolume, UnboundedVolume
 
 
 def model_from_config(config: Union[str, Dict[str, Any]], device: torch.device) -> nn.Module:

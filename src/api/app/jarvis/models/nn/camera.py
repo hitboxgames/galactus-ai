@@ -5,7 +5,7 @@ from typing import Optional, Tuple, Union
 import numpy as np
 import torch
 
-from shap_e.rendering.view_data import ProjectiveCamera
+from app.jarvis.rendering.view_data import ProjectiveCamera
 
 
 @dataclass

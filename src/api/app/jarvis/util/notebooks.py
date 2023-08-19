@@ -7,10 +7,10 @@ import numpy as np
 import torch
 from PIL import Image
 
-from shap_e.models.nn.camera import DifferentiableCameraBatch, DifferentiableProjectiveCamera
-from shap_e.models.transmitter.base import Transmitter, VectorDecoder
-from shap_e.rendering.torch_mesh import TorchMesh
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.nn.camera import DifferentiableCameraBatch, DifferentiableProjectiveCamera
+from app.jarvis.models.transmitter.base import Transmitter, VectorDecoder
+from app.jarvis.rendering.torch_mesh import TorchMesh
+from app.jarvis.util.collections import AttrDict
 
 
 def create_pan_cameras(size: int, device: torch.device) -> DifferentiableCameraBatch:

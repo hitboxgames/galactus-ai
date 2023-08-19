@@ -2,10 +2,10 @@ from typing import Any, Dict, Optional, Tuple
 
 import torch
 
-from shap_e.models.nn.ops import get_act
-from shap_e.models.query import Query
-from shap_e.models.stf.mlp import MLPModel
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.nn.ops import get_act
+from app.jarvis.models.query import Query
+from app.jarvis.models.stf.mlp import MLPModel
+from app.jarvis.util.collections import AttrDict
 
 
 class MLPDensitySDFModel(MLPModel):

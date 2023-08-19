@@ -3,10 +3,10 @@ from typing import Any, Dict, Optional
 
 import torch
 
-from shap_e.models.nn.meta import subdict
-from shap_e.models.renderer import RayRenderer
-from shap_e.models.volume import Volume
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.nn.meta import subdict
+from app.jarvis.models.renderer import RayRenderer
+from app.jarvis.models.volume import Volume
+from app.jarvis.util.collections import AttrDict
 
 from .model import NeRFModel
 from .ray import RayVolumeIntegral, StratifiedRaySampler, render_rays

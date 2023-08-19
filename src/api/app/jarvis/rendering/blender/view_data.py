@@ -6,7 +6,7 @@ from typing import BinaryIO, List, Tuple
 import numpy as np
 from PIL import Image
 
-from shap_e.rendering.view_data import Camera, ProjectiveCamera, ViewData
+from app.jarvis.rendering.view_data import Camera, ProjectiveCamera, ViewData
 
 
 class BlenderViewData(ViewData):

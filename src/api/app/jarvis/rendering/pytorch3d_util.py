@@ -17,7 +17,7 @@ from pytorch3d.renderer import (
 from pytorch3d.renderer.utils import TensorProperties
 from pytorch3d.structures import Meshes
 
-from shap_e.models.nn.checkpoint import checkpoint
+from jarvis.models.nn.checkpoint import checkpoint
 
 from .blender.constants import BASIC_AMBIENT_COLOR, BASIC_DIFFUSE_COLOR, UNIFORM_LIGHT_DIRECTION
 from .torch_mesh import TorchMesh

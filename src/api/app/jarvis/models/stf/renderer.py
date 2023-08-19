@@ -7,17 +7,17 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-from shap_e.models.nn.camera import DifferentiableCamera, DifferentiableProjectiveCamera
-from shap_e.models.nn.meta import subdict
-from shap_e.models.nn.utils import to_torch
-from shap_e.models.query import Query
-from shap_e.models.renderer import Renderer, get_camera_from_batch
-from shap_e.models.volume import BoundingBoxVolume, Volume
-from shap_e.rendering.blender.constants import BASIC_AMBIENT_COLOR, BASIC_DIFFUSE_COLOR
-from shap_e.rendering.mc import marching_cubes
-from shap_e.rendering.torch_mesh import TorchMesh
-from shap_e.rendering.view_data import ProjectiveCamera
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.nn.camera import DifferentiableCamera, DifferentiableProjectiveCamera
+from app.jarvis.models.nn.meta import subdict
+from app.jarvis.models.nn.utils import to_torch
+from app.jarvis.models.query import Query
+from app.jarvis.models.renderer import Renderer, get_camera_from_batch
+from app.jarvis.models.volume import BoundingBoxVolume, Volume
+from app.jarvis.rendering.blender.constants import BASIC_AMBIENT_COLOR, BASIC_DIFFUSE_COLOR
+from app.jarvis.rendering.mc import marching_cubes
+from app.jarvis.rendering.torch_mesh import TorchMesh
+from app.jarvis.rendering.view_data import ProjectiveCamera
+from app.jarvis.util.collections import AttrDict
 
 from .base import Model
 
@@ -328,7 +328,7 @@ def _render_with_pytorch3d(
     _ = tf_out
 
     # Lazy import because pytorch3d is installed lazily.
-    from shap_e.rendering.pytorch3d_util import (
+    from app.jarvis.rendering.pytorch3d_util import (
         blender_uniform_lights,
         convert_cameras_torch,
         convert_meshes,
@@ -399,8 +399,8 @@ def _render_with_raycast(
 ):
     assert np.mean(np.array(specular_color)) == 0
 
-    from shap_e.rendering.raycast.render import render_diffuse_mesh
-    from shap_e.rendering.raycast.types import TriMesh as TorchTriMesh
+    from app.jarvis.rendering.raycast.render import render_diffuse_mesh
+    from app.jarvis.rendering.raycast.types import TriMesh as TorchTriMesh
 
     device = camera.origin.device
     device_type = device.type

@@ -1,16 +1,14 @@
 import os
-from flask import Flask
+from flask import Flask  # noqa: F401
 from app import create_app
 
 app = create_app()
 
 if __name__ == '__main__':
-    """
-    This is the entry point for the application.
-    """
     if os.environ.get('PORT') is None:
-        port = 5000
+        PORT = 5000
     else:
-        port = os.environ.get('PORT')
+        PORT = os.environ.get('PORT')
 
-    app.run(host='0.0.0.0', port=port)
+    print("Running app...")
+    app.run(host='0.0.0.0', port=PORT)

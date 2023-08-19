@@ -1,6 +1,6 @@
 import torch
-from jarvis.models.download import load_model, load_config
-from jarvis.diffusion.gaussian_diffusion import diffusion_from_config
+from app.jarvis.models.download import load_model, load_config
+from app.jarvis.diffusion.gaussian_diffusion import diffusion_from_config
 
 class ModelLoader:
     """

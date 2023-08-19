@@ -1,6 +1,7 @@
 import torch
+import os
 from app.jarvis.diffusion.sample import sample_latents
-from app.jarvis.util.notebooks import decode_latent_images
+from app.jarvis.util.notebooks import decode_latent_mesh
 
 class MeshGenerator:
     """
@@ -26,6 +27,7 @@ class MeshGenerator:
         Returns:
             A latent vector.
         """
+        print("Generating latent vector")
         latents = sample_latents(
             batch_size = self.batch_size,
             model = self.model_loader.text_model,
@@ -41,9 +43,10 @@ class MeshGenerator:
             sigma_max=160,
             s_churn=0,
         )
+        print("Generated latent vector")
         return latents
 
-    def save_latents_to_files(self, latents: torch.Tensor):
+    def save_single_mesh_file(self, latent: torch.Tensor):
         """
         Saves a latent vector to a file.
 
@@ -53,15 +56,49 @@ class MeshGenerator:
         Returns:
             A list of filenames.
         """
-        filenames = []
-        for i, latent in enumerate(latents):
-            t = decode_latent_images(
-                self.model_loader.transmitter_model, latent
-            ).tri_mesh()
-            
-            filename = f'example_mesh_{i}.obj'
-            with open(filename, 'w') as f:
+        print("Saving mesh to file")
+        if not os.path.exists("output"):
+            os.mkdir("output")
+        
+            t = decode_latent_mesh(self.model_loader.transmitter_model, latent).tri_mesh()
+            obj_filename = f'output/mesh.obj'
+            with open(obj_filename, 'w') as f:
                 t.write_obj(f)
-            filenames.append(filename)
-        return filenames
-  
+            print("Saved mesh to file")
+            return obj_filename
+        
+    def latent_to_obj(self, latent: torch.Tensor):
+        """
+        Generates a mesh from a latent vector.
+
+        Args:
+            latent: A tensor of latent vectors.
+
+        Returns:
+            The .obj format data as a string.
+        """
+        decoded = decode_latent_mesh(self.model_loader.transmitter_model, latent).tri_mesh()
+        obj_data = self.mesh_to_obj(decoded.vertices, decoded.faces)
+        return obj_data
+        
+    def mesh_to_obj(self, vertices: torch.Tensor, faces: torch.Tensor) -> str:
+        obj_lines = []
+
+        # Add vertices to the obj string
+        for vertex in vertices:
+            obj_lines.append(f"v {' '.join(map(str, vertex))}")
+
+        # Add faces to the obj string
+        for face in faces:
+            # OBJ format uses 1-indexed vertices
+            obj_lines.append(f"f {' '.join(map(lambda x: str(x+1), face))}")
+
+        return "\n".join(obj_lines)
+
+        
+    
+    
+
+    
+
+            

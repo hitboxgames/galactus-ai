@@ -6,9 +6,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 from PIL import Image
 
-from shap_e.models.generation.transformer import Transformer
-from shap_e.rendering.view_data import ProjectiveCamera
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.generation.transformer import Transformer
+from app.jarvis.rendering.view_data import ProjectiveCamera
+from app.jarvis.util.collections import AttrDict
 
 from .base import VectorEncoder
 

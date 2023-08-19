@@ -3,17 +3,17 @@ from typing import Any, Dict, Optional, Sequence, Tuple, Union
 
 import torch
 
-from shap_e.models.nerf.model import NeRFModel
-from shap_e.models.nerf.ray import RayVolumeIntegral, StratifiedRaySampler, render_rays
-from shap_e.models.nn.meta import subdict
-from shap_e.models.nn.utils import to_torch
-from shap_e.models.query import Query
-from shap_e.models.renderer import RayRenderer, render_views_from_rays
-from shap_e.models.stf.base import Model
-from shap_e.models.stf.renderer import STFRendererBase, render_views_from_stf
-from shap_e.models.volume import BoundingBoxVolume, Volume
-from shap_e.rendering.blender.constants import BASIC_AMBIENT_COLOR, BASIC_DIFFUSE_COLOR
-from shap_e.util.collections import AttrDict
+from app.jarvis.models.nerf.model import NeRFModel
+from app.jarvis.models.nerf.ray import RayVolumeIntegral, StratifiedRaySampler, render_rays
+from app.jarvis.models.nn.meta import subdict
+from app.jarvis.models.nn.utils import to_torch
+from app.jarvis.models.query import Query
+from app.jarvis.models.renderer import RayRenderer, render_views_from_rays
+from app.jarvis.models.stf.base import Model
+from app.jarvis.models.stf.renderer import STFRendererBase, render_views_from_stf
+from app.jarvis.models.volume import BoundingBoxVolume, Volume
+from app.jarvis.rendering.blender.constants import BASIC_AMBIENT_COLOR, BASIC_DIFFUSE_COLOR
+from app.jarvis.util.collections import AttrDict
 
 
 class NeRSTFRenderer(RayRenderer, STFRendererBase):
