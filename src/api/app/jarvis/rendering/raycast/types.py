@@ -71,7 +71,7 @@ class TriMesh:
         return normalize(cross_product(v1, v2))
 
     @classmethod
-    def from_numpy(cls, x: shap_e.rendering.mesh.TriMesh) -> "TriMesh":
+    def from_numpy(cls, x: app.jarvis.rendering.mesh.TriMesh) -> "TriMesh":
         vertex_colors = None
         if all(ch in x.vertex_channels for ch in "RGB"):
             vertex_colors = torch.from_numpy(

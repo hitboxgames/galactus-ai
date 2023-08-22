@@ -103,8 +103,8 @@ class TriMesh:
         ]
 
         combined_data = ["v " + vertex for vertex in vertices] + faces
-
-        return raw_f.writelines("\n".join(combined_data))
+        byte_data = "\n".join(combined_data).encode("utf-8")
+        raw_f.write(byte_data)
     
     def get_vertices(self, raw_f: BinaryIO):
         if self.has_vertex_colors():

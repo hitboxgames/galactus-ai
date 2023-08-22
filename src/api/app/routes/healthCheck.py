@@ -1,4 +1,4 @@
-from flask import jsonify, request, Blueprint
+from flask import jsonify, Blueprint
 
 health_check = Blueprint("health_check", __name__)
 
