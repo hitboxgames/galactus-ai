@@ -33,6 +33,7 @@ setup(
         "blobfile",
         "pyyaml",
         "ipywidgets",
+        "pygltflib",
         "clip @ git+https://github.com/openai/CLIP.git",
     ],
     author="OpenAI + Pixelz",

@@ -11,19 +11,28 @@ generate = Blueprint("generate", __name__)
 mesh_generator = MeshGenerator()
 
 @generate.route("/generate", methods=["POST"])
-def generate_mesh() -> torch.Tensor:
-    """Generate a mesh from the given prompt"""
+def generate_mesh() -> Response:
+    """
+    Generate a mesh from the given prompt
+
+    Returns:
+        The generated mesh
+    """
     print("Generating mesh")
     prompt = request.json["prompt"]
     latent = mesh_generator.generate_latent(prompt)
     tri_mesh = decode_latent_mesh(mesh_generator.transmitter_model, latent).tri_mesh()
-    buf = io.BytesIO()
-    tri_mesh.write_obj(buf)
-    buf.seek(0)
-    return Response(buf, mimetype="text/plain", headers={"Content-Disposition": "attachment;filename=mesh.obj"})
+    buffer = io.BytesIO()
+    tri_mesh.write_obj(buffer)
+    buffer.seek(0)
+    return Response(
+        buffer,
+        mimetype="text/plain",
+        headers={"Content-Disposition": f'attachment;filename={prompt}.glb'}
+    )
 
 @generate.route("/save", methods=["POST"])
-def save_mesh() -> torch.Tensor:
+def save_mesh() -> Response:
     """Save the generated mesh"""
     prompt = request.json["prompt"]
     latent = mesh_generator.generate_latent(prompt)

@@ -65,3 +65,4 @@ urllib3==2.0.4
 wcwidth==0.2.6
 widgetsnbextension==4.0.8
 zipp==3.16.2
+pygltflib==1.16.0

@@ -5,6 +5,7 @@ import blobfile as bf
 import numpy as np
 
 from .ply_util import write_ply
+from .glb_util import write_glb
 
 
 @dataclass
@@ -73,9 +74,21 @@ class TriMesh:
             np.savez(f, **obj_dict)
 
     def has_vertex_colors(self) -> bool:
+        """
+        Returns whether the mesh has vertex colors.
+
+        Returns:
+            Whether the mesh has vertex colors.
+        """
         return self.vertex_channels is not None and all(x in self.vertex_channels for x in "RGB")
 
-    def write_ply(self, raw_f: BinaryIO):
+    def write_ply(self, raw_f: BinaryIO) -> None:
+        """
+        Write the mesh to a .ply file.
+
+        Args:
+            raw_f: The file to write to.
+        """
         write_ply(
             raw_f,
             coords=self.verts,
@@ -87,7 +100,13 @@ class TriMesh:
             faces=self.faces,
         )
 
-    def write_obj(self, raw_f: BinaryIO):
+    def write_obj(self, raw_f: BinaryIO) -> None:
+        """
+        Write the mesh to a .obj file.
+
+        Args:
+            raw_f: The file to write to.
+        """
         if self.has_vertex_colors():
             vertex_colors = np.stack([self.vertex_channels[x] for x in "RGB"], axis=1)
             vertices = [
@@ -106,7 +125,34 @@ class TriMesh:
         byte_data = "\n".join(combined_data).encode("utf-8")
         raw_f.write(byte_data)
     
-    def get_vertices(self, raw_f: BinaryIO):
+    def write_glb(self, raw_f: BinaryIO) -> None:
+        """
+        Write the mesh to a .glb file.
+
+        Args:
+            raw_f: The file to write to.
+        
+        Returns:
+            None
+        """
+        write_glb(
+            raw_f,
+            coords=self.verts,
+            rgb=(
+                np.stack([self.vertex_channels[x] for x in "RGB"], axis=1)
+                if self.has_vertex_colors()
+                else None
+            ),
+            faces=self.faces,
+        )
+    
+    def get_vertices(self, raw_f: BinaryIO) -> None:
+        """
+        Get the vertices of the mesh
+
+        Args:
+            raw_f: The file to write to.
+        """
         if self.has_vertex_colors():
             vertex_colors = np.stack([self.vertex_channels[x] for x in "RGB"], axis=1)
             vertices = [
@@ -117,7 +163,13 @@ class TriMesh:
             vertices = ["{} {} {}".format(*coord) for coord in self.verts.tolist()]
         return vertices
     
-    def get_faces(self, raw_f: BinaryIO):
+    def get_faces(self, raw_f: BinaryIO) -> None:
+        """
+        Get the faces of the mesh
+
+        Args:
+            raw_f: The file to write to.
+        """
         faces = [
             "f {} {} {}".format(str(tri[0] + 1), str(tri[1] + 1), str(tri[2] + 1))
             for tri in self.faces.tolist()
