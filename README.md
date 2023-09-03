@@ -35,4 +35,3 @@ Run the premade docker-compose script.
 ```bash
 $ ./deploy.sh
 ```
-Gino
