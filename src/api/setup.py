@@ -1,9 +1,12 @@
+"""
+Setup file for Jarvis API.
+"""
+
 from setuptools import setup
 
-setup(  
+setup(
     name="jarvis",
     packages=[
-        "app.middleware",
         "app.jarvis",
         "app.jarvis.diffusion",
         "app.jarvis.models",

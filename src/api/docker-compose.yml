@@ -3,7 +3,7 @@ version: "3"
 # define services
 services:
   api:
-  # define container name
+    # define container name
     container_name: galactus
     # point to dockerfile for api build
     build: .

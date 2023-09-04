@@ -1,6 +1,12 @@
+"""
+authentication.py
+
+Handles all authentication for the API routes
+"""
+
+import os
 from functools import wraps
 from flask import request, jsonify
-import os
 from dotenv import load_dotenv
 
 load_dotenv()
