@@ -3,6 +3,7 @@ from setuptools import setup
 setup(  
     name="jarvis",
     packages=[
+        "app.middleware",
         "app.jarvis",
         "app.jarvis.diffusion",
         "app.jarvis.models",
@@ -34,6 +35,7 @@ setup(
         "pyyaml",
         "ipywidgets",
         "pygltflib",
+        "python-dotenv",
         "clip @ git+https://github.com/openai/CLIP.git",
     ],
     author="OpenAI + Pixelz",

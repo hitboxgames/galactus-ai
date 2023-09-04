@@ -1,5 +1,5 @@
 import os
-from flask import Flask  # noqa: F401
+from flask import Flask
 from app import create_app
 
 app = create_app()
