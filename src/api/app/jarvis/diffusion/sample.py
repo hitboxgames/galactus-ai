@@ -15,6 +15,13 @@ DEFAULT_KARRAS_S_CHURN = 0.0
 def uncond_guide_model(
     model: Callable[..., torch.Tensor], scale: float
 ) -> Callable[..., torch.Tensor]:
+    """
+    Wrap a model to use unconditioned guidance.
+
+    :param model: The model to wrap.
+    :param scale: The scale of the guidance.
+    :return: The wrapped model.
+    """
     def model_fn(x_t, ts, **kwargs):
         half = x_t[: len(x_t) // 2]
         combined = torch.cat([half, half], dim=0)
@@ -45,6 +52,25 @@ def sample_latents(
     device: Optional[torch.device] = None,
     progress: bool = False,
 ) -> torch.Tensor:
+    """
+    Generate latents from a model.
+
+    :param batch_size: The number of latents to generate.
+    :param model: The model to generate latents from.
+    :param diffusion: The diffusion model.
+    :param model_kwargs: The model kwargs.
+    :param guidance_scale: The scale of the guidance.
+    :param clip_denoised: Whether to clip the denoised image.
+    :param use_fp16: Whether to use fp16.
+    :param use_karras: Whether to use karras sampling.
+    :param karras_steps: The number of karras steps.
+    :param sigma_min: The minimum sigma.
+    :param sigma_max: The maximum sigma.
+    :param s_churn: The s churn.
+    :param device: The device to run the model on.
+    :param progress: Whether to show a progress bar.
+    :return: The generated latents.
+    """
     sample_shape = (batch_size, model.d_latent)
 
     print("Sampling latents")
