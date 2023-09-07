@@ -1,5 +1,5 @@
 from app import server
-from ..routes.generateRoute import generate
+from .generate_route import generate
 from ..routes.healthCheck import health_check
 
 print("Registering blueprints...")

@@ -25,9 +25,68 @@ class MeshService:
     """
     def __init__(self):
         self.mesh_generator = MeshGenerator()
-        
-    @staticmethod
-    def validate_prompt(prompt: Any) -> None:
+
+    def generate_mesh_as_glb(self, prompt: str) -> io.BytesIO:
+        """
+        After validation we can call the 
+        meshAPI to generate our mesh.
+
+        :param prompt (str): The text prompt to generate a mesh from
+        :return: A tuple containing the mesh and the filename
+        """
+        try:
+            self.validate_prompt(prompt)
+
+            mesh = self.mesh_generator.generate_latent(prompt)
+            decoded_mesh = decode_latent_mesh(
+                self.mesh_generator.model.transmitter_model,
+                mesh
+            ).tri_mesh()
+            buffer = io.BytesIO()
+            decoded_mesh.write_glb(buffer)
+            buffer.seek(0)
+            log.info(
+                f'{SUCCESSFUL_GENERATION}: {prompt}', "generate_mesh_as_glb"
+            )
+            return buffer
+
+        except Exception as error:
+            log.error(
+                f'{FAILED_GENERATION}: {prompt}', "generate_mesh_as_glb", error
+            )
+            raise error
+
+    def generate_mesh_as_obj(self, prompt: str) -> Tuple[io.BytesIO, str]:
+        """
+        After validation we can call the 
+        meshAPI to generate our mesh.
+
+        :param prompt (str): The text prompt to generate a mesh from
+        :return: A tuple containing the mesh and the filename
+        """
+        try:
+            self.validate_prompt(prompt)
+
+            mesh = self.mesh_generator.generate_latent(prompt)
+            decoded_mesh = decode_latent_mesh(
+                self.mesh_generator.model.transmitter_model,
+                mesh
+            ).tri_mesh()
+            buffer = io.BytesIO()
+            decoded_mesh.write_obj(buffer)
+            buffer.seek(0)
+            log.info(
+                f'{SUCCESSFUL_GENERATION}: {prompt}', "generate_mesh_as_obj"
+            )
+            return buffer
+
+        except Exception as error:
+            log.error(
+                f'{FAILED_GENERATION}: {prompt}', "generate_mesh_as_obj", error
+            )
+            raise error
+    
+    def validate_prompt(self, prompt: Any) -> None:
         """
         We need to validate the prompt 
         before we can generate a mesh from it.
@@ -47,65 +106,3 @@ class MeshService:
                 FAILED_GENERATION, "validate_prompt", PROMPT_LENGTH_ERROR
             )
             raise ValueError(PROMPT_LENGTH_ERROR)
-
-    @staticmethod
-    def generate_mesh_as_glb(prompt: str) -> io.BytesIO:
-        """
-        After validation we can call the 
-        meshAPI to generate our mesh.
-
-        :param prompt (str): The text prompt to generate a mesh from
-        :return: A tuple containing the mesh and the filename
-        """
-        try:
-            MeshService.validate_prompt(prompt)
-
-            mesh = mesh_generator.generate_latent(prompt)
-            decoded_mesh = decode_latent_mesh(
-                mesh_generator.model.transmitter_model,
-                mesh
-            ).tri_mesh()
-            buffer = io.BytesIO()
-            decoded_mesh.write_glb(buffer)
-            buffer.seek(0)
-            log.info(
-                f'{SUCCESSFUL_GENERATION}: {prompt}', "generate_mesh_as_glb"
-            )
-            return buffer
-
-        except Exception as error:
-            log.error(
-                f'{FAILED_GENERATION}: {prompt}', "generate_mesh_as_glb", error
-            )
-            raise error
-
-    @staticmethod
-    def generate_mesh_as_obj(prompt: str) -> Tuple[io.BytesIO, str]:
-        """
-        After validation we can call the 
-        meshAPI to generate our mesh.
-
-        :param prompt (str): The text prompt to generate a mesh from
-        :return: A tuple containing the mesh and the filename
-        """
-        try:
-            MeshService.validate_prompt(prompt)
-
-            mesh = mesh_generator.generate_latent(prompt)
-            decoded_mesh = decode_latent_mesh(
-                mesh_generator.model.transmitter_model, 
-                mesh
-            ).tri_mesh()
-            buffer = io.BytesIO()
-            decoded_mesh.write_obj(buffer)
-            buffer.seek(0)
-            log.info(
-                f'{SUCCESSFUL_GENERATION}: {prompt}', "generate_mesh_as_obj"
-            )
-            return buffer
-
-        except Exception as error:
-            log.error(
-                f'{FAILED_GENERATION}: {prompt}', "generate_mesh_as_obj", error
-            )
-            raise error

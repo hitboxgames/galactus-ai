@@ -40,7 +40,7 @@ class CustomLogger:
         :param error: The error message we want to log.
         :return: The formatted message.
         """
-        return json.dumps({"message": message, "method": method, "error": error})
+        return json.dumps({"message": message, "method": method, "error": str(error)})
 
     def info(self, message, method):
         """
