@@ -14,3 +14,8 @@ def health_check_route() -> str:
 def ping() -> str:
     """Ping route"""
     return jsonify({"message": "pong"}, 200)
+
+@health_check.route("/", methods=["GET"])
+def home() -> str:
+    """Home route"""
+    return jsonify({"message": "Welcome to the API!"}, 200)

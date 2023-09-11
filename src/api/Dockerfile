@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.9-slim-buster
+FROM python:3.11
 # make root directory in our image
 RUN mkdir /app
 # define working directory

@@ -13,6 +13,7 @@ python-dotenv==1.0.0
 executing==1.2.0
 filelock==3.12.2
 fire==0.5.0
+Flask==2.3.2
 fonttools==4.42.0
 ftfy==6.1.1
 humanize==4.8.0

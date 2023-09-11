@@ -1,18 +1,13 @@
 version: "3"
 
-# define services
 services:
-  api:
-    # define container name
+  galactus:
     container_name: galactus
-    # point to dockerfile for api build
     build: .
-    # define ports to expose
     ports:
-        - "${API_PORT}:${API_PORT}"
-    networks:
-      customnetwork:
-        ipv4_address: ${FLASK_IP}
+      - 5000
+    env_file:
+      - .env
     deploy:
       resources:
         reservations:
@@ -20,15 +15,10 @@ services:
             - driver: "nvidia"
               count: 1
               capabilities: [gpu]
-  webserver:
-    image: nginx
-    container_name: web-server
-    networks:
-      customnetwork:
-        ipv4_address: ${NGINX_IP}
-
-networks:
-  customnetwork:
-    ipam:
-      config:
-        - subnet: ${SUBNET}
+  nginx:
+    build: ./services/nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - galactus
+    
