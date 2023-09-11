@@ -22,11 +22,8 @@ The service is hosted on a personal machine and is accessible via `pixelz.duckdn
 Reach out to Gino Rey to obtain an API key. The API key must be included in the request headers.
 
 - `POST /generate_glb`: Generate a GLB 3D mesh. Requires a JSON object in the format `{"prompt": "a car"}`.
-  
 - `POST /generate_obj`: Generate an OBJ 3D mesh. Requires a JSON object in the format `{"prompt": "a car"}`.
-
 - `POST /ping`: Verifies the API's latency.
-- 
 - `GET /health_check`: Verifies that the API is operational.
 
 ## Hosting and Networking
@@ -37,11 +34,9 @@ Requests to `pixelz.duckdns.org:1337` are directed to our local machine via port
 ### How it Works
 
 1. **Local Network Setup**: Our local network is configured to forward incoming traffic on port 1337 to the machine where the Galactus service is hosted.
-  
 2. **NGINX Container**: On this machine, we have an NGINX container running that listens on port 1337.
-
 3. **Routing**: NGINX is configured as a reverse proxy to route the incoming requests to the Galactus container.
-
+   
 This setup allows us to securely manage and route incoming internet traffic to our local service, making it accessible from the outside world.
 
 ## Requirements
