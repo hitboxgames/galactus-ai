@@ -39,7 +39,19 @@ Requests to `pixelz.duckdns.org:1337` are directed to our local machine via port
    
 This setup allows us to securely manage and route incoming internet traffic to our local service, making it accessible from the outside world.
 
-## Requirements
+## Local Hosting Requirements
+
+If you plan on hosting this API locally, you will need:
+
+* A GPU powerful enough to run the 3D mesh generator model.
+* NVIDIA Toolkit installed on your system.
+* CUDA installed for GPU support.
+
+### NGINX Configuration
+
+If you are hosting the API locally, you will also need to update the NGINX configuration files to match your specific requirements. Please consult the `nginx.conf` file in the `nginx` folder for more information.
+
+### Docker
 
 * Docker. Please, note that `docker-compose` is needed too and is included in
 the Docker Desktop installation. Docker Desktop is available for
@@ -52,7 +64,7 @@ install [Docker Engine](https://docs.docker.com/engine/install/) and
 [docker-compose](https://docs.docker.com/compose/install/). In that case,
 please use `docker-compose` instead of `docker compose` in all commands below.
 
-## Running Locally without Docker
+### Running Locally without Docker
 
 Install all requirements, then run the app entry point.
 ```bash
@@ -60,7 +72,7 @@ $ pip install -e .
 $ python3 startup.py
 ```
 
-## Running Locally with Docker
+### Running Locally with Docker
 
 Run the premade docker-compose script.
 ```bash
