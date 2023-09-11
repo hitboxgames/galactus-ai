@@ -1,11 +1,15 @@
 # Galactus Micro Service
 
-Galactus is a micro service which exposes the Jarvis 3D mesh generator model using Flask.  
+Galactus is a Flask-based microservice designed to expose the Jarvis 3D mesh generator model. 
+The service is hosted on a personal machine and is accessible via `pixelz.duckdns.org:1337`.
 
-### Pylint Integration
+## Features
 
-For developers working on this repository, please be aware that we have integrated `pylint`. Every push to the repository will activate our `pylint` checks. Ensure your code conforms to our coding standards and guidelines. This will help in avoiding any potential build or merge issues.
-
+- **Pylint Integration**: Ensures code quality and conformity with coding standards.
+- **Access Control**: API key-based authorization for secure access.
+- **Various Routes**: Supports generating 3D meshes in GLB and OBJ formats.
+- **Health Check Routes**: To ensure the API is running smoothly.
+- **Docker Support**: Easy setup and deployment using Docker and `docker-compose`.
 
 ## Requirements
 
