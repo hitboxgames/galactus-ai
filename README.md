@@ -25,9 +25,8 @@ Reach out to Gino Rey to obtain an API key. The API key must be included in the 
   
 - `POST /generate_obj`: Generate an OBJ 3D mesh. Requires a JSON object in the format `{"prompt": "a car"}`.
 
-### Health Check Routes
-
 - `POST /ping`: Verifies the API's latency.
+- 
 - `GET /health_check`: Verifies that the API is operational.
 
 ## Hosting and Networking
